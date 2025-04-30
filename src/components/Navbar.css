@@ -1,0 +1,103 @@
+/* src/Navbar.css or src/App.css */
+
+/* Increase Navbar Height */
+.custom-navbar {
+  padding-top: 0.8rem;    /* Adjust top padding */
+  padding-bottom: 0.8rem; /* Adjust bottom padding */
+  /* Or use min-height */
+  /* min-height: 80px; */ /* Example: Set a minimum height */
+}
+
+/* Ensure container inside takes height if needed */
+.custom-navbar .container-fluid {
+  min-height: inherit; /* Inherit min-height if set on parent */
+}
+
+/* Style the logo within the Navbar */
+.navbar-logo {
+  height: 60px; /* Adjust height as desired - make it larger */
+  width: auto;  /* Maintain aspect ratio */
+  vertical-align: middle; /* Align vertically */
+}
+
+/* Adjust link wrapper if needed */
+.navbar-logo-link {
+  /* Remove default padding/margin if it interferes */
+  /* padding: 0; */
+  /* margin: 0 auto; */ /* Ensure centering works with flex */
+  line-height: 1; /* Prevent extra space */
+}
+
+/* Style the logo within the Offcanvas */
+.offcanvas-logo {
+  max-height: 80px; /* Example height for Offcanvas logo */
+  width: auto;
+  max-width: 80%; /* Prevent it becoming too wide */
+}
+
+/* Optional: Ensure Toggler button is vertically centered in taller navbar */
+/* .menu-toggler {
+  align-self: center;
+} */
+
+/* Optional: Add margin-top to main content if using sticky-top navbar */
+/* Adjust value based on your final navbar height */
+.main-content {
+  padding-top: 100px; /* Example: Provide space below the sticky navbar */
+}
+
+/* Ensure body background is light */
+body {
+  background-color: #f8f9fa; /* Bootstrap light bg */
+}
+
+/* Adjust app container if needed */
+.app-container {
+  min-height: 100vh;
+}
+
+/* src/Navbar.css or src/App.css */
+
+/* ... (keep existing styles for .custom-navbar, .navbar-logo, etc.) ... */
+
+/* Style the links within the Offcanvas */
+.offcanvas-body .nav-link {
+  color: #000000 !important; /* Force color to black */
+  /* Or use Bootstrap's standard dark color: */
+  /* color: #212529 !important; */
+}
+
+/* Optional: Style for the active link if you want it black too */
+.offcanvas-body .nav-link.active {
+  color: #000000 !important; /* Ensure active link is also black */
+  /* You might want a different style for active, like just bold */
+  /* font-weight: bold; */
+  /* color: #555 !important; */ /* Example: Dark gray for active */
+}
+
+/* Style the Offcanvas Title if needed (it should inherit, but just in case) */
+.offcanvas-header .offcanvas-title {
+   color: #000000 !important; /* Force title color */
+   /* color: #212529 !important; */
+}
+
+/* Style the Offcanvas close button color if needed */
+.offcanvas-header .btn-close {
+    /* Default Bootstrap usually adapts, but you can force filter */
+    /* filter: invert(0) grayscale(100%) brightness(0%); */ /* Makes it black */
+}
+
+/* Ensure body background is light */
+body {
+  background-color: #f8f9fa; /* Bootstrap light bg */
+}
+
+/* Adjust app container if needed */
+.app-container {
+  min-height: 100vh;
+}
+
+/* Optional: Add margin-top to main content if using sticky-top navbar */
+.main-content {
+  padding-top: 100px; /* Adjust based on your final navbar height */
+}

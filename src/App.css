@@ -36,3 +36,134 @@
     transform: rotate(360deg);
   }
 }
+
+/* src/App.css */
+
+/* Style the header containing the logo */
+.app-header {
+  background-color: #e9ecef; /* Slightly different background for contrast, or use bg-white */
+  /* border-bottom: 1px solid #dee2e6; */ /* Optional border */
+}
+
+/* Style the logo within the header */
+.app-logo {
+  max-height: 100px; /* Control the max height - Adjust this value! */
+  width: auto;       /* Maintain aspect ratio */
+}
+
+/* Ensure body background is light if not already default */
+body {
+  background-color: #f8f9fa; /* Bootstrap light bg */
+}
+
+/* Add other global styles if needed */
+.app-container {
+  min-height: 100vh; /* Ensure container takes full height */
+}
+
+/* src/App.css */
+
+/* --- Page Fade Transition --- */
+.page-fade-enter {
+  opacity: 0;
+  transform: scale(0.98); /* Optional: slight scale effect */
+}
+.page-fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+.page-fade-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.page-fade-exit-active {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+/* Ensure content takes up space during transition */
+/* You might need to adjust positioning depending on your exact layout */
+.main-content {
+  /* If using absolute positioning for transitions, uncomment below */
+  /* position: relative; */
+  /* width: 100%; */
+   padding-top: 100px; /* Keep padding from sticky navbar */
+}
+
+/* --- Hover Transitions --- */
+
+/* Smooth transition for Bootstrap Buttons */
+.btn {
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Smooth transition for Nav Links (in Navbar and Offcanvas) */
+.nav-link {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+/* Example hover style for Offcanvas links */
+.offcanvas-body .nav-link:hover {
+  color: #555 !important; /* Slightly lighter black on hover */
+  /* background-color: #f0f0f0; */ /* Optional subtle background */
+}
+
+/* --- General Element Fade-in Animation --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); } /* Start invisible and slightly down */
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Class to apply the fade-in animation */
+.fade-in-on-load {
+  animation: fadeIn 0.6s ease-out forwards; /* Apply the animation */
+  opacity: 0; /* Start hidden */
+}
+
+/* Example Usage (apply to elements in your page components like About.js) */
+/* In About.js: <div className="fade-in-on-load"> ... content ... </div> */
+
+
+/* --- Existing Styles (Keep these) --- */
+
+/* Style the header containing the logo */
+/* (Remove if you reverted this) */
+/* .app-header { ... } */
+/* .app-logo { ... } */
+
+/* Navbar height styles */
+.custom-navbar {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  /* min-height: 80px; */
+}
+.custom-navbar .container-fluid {
+  min-height: inherit;
+}
+.navbar-logo {
+  height: 60px;
+  width: auto;
+  vertical-align: middle;
+}
+.navbar-logo-link {
+  line-height: 1;
+}
+.offcanvas-logo {
+  max-height: 80px;
+  width: auto;
+  max-width: 80%;
+}
+.offcanvas-body .nav-link {
+  color: #000000 !important;
+}
+.offcanvas-body .nav-link.active {
+  color: #000000 !important;
+  font-weight: bold; /* Make active link bold */
+}
+body {
+  background-color: #f8f9fa;
+}
+.app-container {
+  min-height: 100vh;
+}
