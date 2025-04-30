@@ -42,9 +42,6 @@
 
 /* Optional: Add margin-top to main content if using sticky-top navbar */
 /* Adjust value based on your final navbar height */
-.main-content {
-  padding-top: 100px; /* Example: Provide space below the sticky navbar */
-}
 
 /* Ensure body background is light */
 body {
@@ -98,6 +95,28 @@ body {
 }
 
 /* Optional: Add margin-top to main content if using sticky-top navbar */
-.main-content {
-  padding-top: 100px; /* Adjust based on your final navbar height */
+
+
+/* src/App.css or src/Navbar.css */
+
+/* ... existing styles ... */
+
+/* Style for the sticky navbar */
+.custom-navbar {
+  /* ... existing height/padding styles ... */
+  position: sticky; /* Ensure sticky is applied */
+  top: 0;
+  z-index: 1030; /* Ensure it's above most content (Bootstrap's standard sticky z-index) */
+  transition: transform 0.4s ease-in-out; /* Smooth transition for showing/hiding */
+  width: 100%; /* Ensure it takes full width */
 }
+
+/* Class to apply when navbar should be hidden */
+.navbar-hidden {
+  transform: translateY(-100%); /* Move navbar completely off-screen upwards */
+}
+
+/* Adjust main content padding dynamically via JS now, */
+/* but keep a fallback or minimum */
+
+

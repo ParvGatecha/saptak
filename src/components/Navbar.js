@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react"; // Import useEffect, useRef
 import { Link, NavLink } from "react-router-dom";
 import {
   Offcanvas,
   Button,
   Container,
-  Navbar as BSNavbar, // Renamed to avoid conflict
+  Navbar as BSNavbar,
   Nav,
-  Image, // Import Image for easier handling in Offcanvas if needed
+  Image,
 } from "react-bootstrap";
-import logo from "../assets/logo.png"; // Import the logo again
-import "./Navbar.css"; // We'll add styles here for height and logo size
+import logo from "../assets/logo.png";
+import "./Navbar.css"; // Ensure CSS for transitions is here or in App.css
 
 function Navbar() {
-  const [show, setShow] = useState(false);
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true); // State to control visibility
+  const lastScrollY = useRef(0); // Ref to store last scroll position
+  const navbarHeight = useRef(0); // Ref to store navbar height for calculations
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleCloseOffcanvas = () => setShowOffcanvas(false);
+  const handleShowOffcanvas = () => setShowOffcanvas(true);
 
   const getNavLinkClass = ({ isActive }) => {
     let baseClass = "nav-link text-dark";
@@ -25,75 +28,114 @@ function Navbar() {
     return baseClass;
   };
 
+  // Effect to handle scroll event listener
+  useEffect(() => {
+    const navbarEl = document.querySelector(".custom-navbar");
+    if (navbarEl) {
+      navbarHeight.current = navbarEl.offsetHeight;
+      // Update main content padding dynamically (optional but smoother)
+      const mainContent = document.querySelector(".main-content");
+      if (mainContent) {
+        mainContent.style.paddingTop = `${navbarHeight.current}px`;
+      }
+    }
+
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY;
+      // Don't hide if near the top or scrolling up past the navbar height threshold
+      if (
+        currentScrollY <= navbarHeight.current ||
+        currentScrollY < lastScrollY.current
+      ) {
+        setShowNavbar(true);
+      } else if (
+        currentScrollY > lastScrollY.current &&
+        currentScrollY > navbarHeight.current + 10
+      ) {
+        // Add a small buffer (10px)
+        // Hide only if scrolling down significantly past the navbar
+        setShowNavbar(false);
+        // Close Offcanvas if open when hiding navbar
+        handleCloseOffcanvas();
+      }
+      // Remember scroll position for next comparison
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", controlNavbar);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, []); // Empty dependency array means this runs once on mount
+
   return (
     <>
-      {/* Navbar with custom class for styling */}
+      {/* Add dynamic class 'navbar-hidden' based on state */}
       <BSNavbar
         bg="light"
         variant="light"
-        className="shadow custom-navbar" // Added custom-navbar class
+        className={`shadow custom-navbar ${!showNavbar ? "navbar-hidden" : ""}`} // Add dynamic class
         sticky="top"
-        expand={false} // Keep collapsed
+        expand={false}
       >
         <Container
           fluid
           className="d-flex justify-content-between align-items-center"
         >
-          {/* Hamburger Button */}
           <Button
             variant="outline-dark"
-            onClick={handleShow}
+            onClick={handleShowOffcanvas}
             aria-label="Toggle navigation menu"
-            className="menu-toggler" // Add class if specific styling needed
+            className="menu-toggler"
           >
             ☰
           </Button>
 
-          {/* Logo in Navbar - Centered (or adjust alignment) */}
-          {/* Wrap in a div if needed for finer positioning control */}
           <BSNavbar.Brand as={Link} to="/" className="navbar-logo-link mx-auto">
             <img
               src={logo}
               alt="Saptak Dance Studio Logo"
-              className="navbar-logo" // Class for styling the navbar logo
+              className="navbar-logo"
             />
           </BSNavbar.Brand>
 
-          {/* Optional: Placeholder to balance the flex container if logo isn't centered */}
-          {/* <div style={{ width: 'calc(size-of-toggler-button)' }}></div> */}
+          {/* Placeholder might be needed if logo isn't centered perfectly */}
+          <div style={{ width: "50px", visibility: "hidden" }}>
+            {" "}
+            {/* Adjust width based on toggler size */}
+            {/* Placeholder to help center logo when only toggler is visible */}
+          </div>
         </Container>
       </BSNavbar>
 
       {/* Offcanvas */}
       <Offcanvas
-        show={show}
-        onHide={handleClose}
+        // Use controlled state 'showOffcanvas'
+        show={showOffcanvas}
+        onHide={handleCloseOffcanvas}
         placement="start"
         className="bg-light text-dark"
       >
+        {/* ... Offcanvas content remains the same ... */}
         <Offcanvas.Header closeButton>
-          {/* Optional Title */}
           {/* <Offcanvas.Title>Menu</Offcanvas.Title> */}
         </Offcanvas.Header>
         <Offcanvas.Body>
-          {/* Logo in Offcanvas */}
           <div className="text-center mb-4">
-            {" "}
-            {/* Center logo and add margin bottom */}
             <Image
               src={logo}
               alt="Saptak Dance Studio Logo"
-              className="offcanvas-logo" // Class for styling the offcanvas logo
-              fluid // Make it responsive within the offcanvas
+              className="offcanvas-logo"
+              fluid
             />
           </div>
-
-          {/* Navigation Links */}
           <Nav className="flex-column">
             <Nav.Link
               as={NavLink}
               to="/"
-              onClick={handleClose}
+              onClick={handleCloseOffcanvas}
               className={getNavLinkClass}
               end
             >
@@ -102,7 +144,7 @@ function Navbar() {
             <Nav.Link
               as={NavLink}
               to="/saptak-folk-dance-group"
-              onClick={handleClose}
+              onClick={handleCloseOffcanvas}
               className={getNavLinkClass}
             >
               Folk Dance Group
@@ -110,7 +152,7 @@ function Navbar() {
             <Nav.Link
               as={NavLink}
               to="/saptak-institute"
-              onClick={handleClose}
+              onClick={handleCloseOffcanvas}
               className={getNavLinkClass}
             >
               Institute
@@ -118,7 +160,7 @@ function Navbar() {
             <Nav.Link
               as={NavLink}
               to="/chetan-jethva"
-              onClick={handleClose}
+              onClick={handleCloseOffcanvas}
               className={getNavLinkClass}
             >
               Chetan Jethva

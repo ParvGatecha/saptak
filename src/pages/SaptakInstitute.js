@@ -10,8 +10,8 @@ function SaptakInstitute() {
   };
 
   return (
-    <Container className="my-5 fade-in-on-load">
-      <Card className="p-5 bg-dark text-warning border-light shadow-lg rounded-4">
+    <Container className="my-3 fade-in-on-load mw-100">
+      <Card className="p-3 p-md-5 bg-dark text-warning border-light shadow-lg rounded-4">
         <h2 className="text-center mb-4">Saptak Institute of Folk Dance</h2>
 
         <Row className="align-items-center mb-5">

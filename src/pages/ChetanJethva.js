@@ -13,9 +13,9 @@ function ChetanJethva() {
 
   return (
     // Use the same outer container styling
-    <Container className="my-5 fade-in-on-load">
+    <Container className="my-3 fade-in-on-load mw-100 mw-100">
       {/* Apply the same card styling */}
-      <Card className="p-5 bg-dark text-warning border-light shadow-lg rounded-4">
+      <Card className="p-3 p-md-5 bg-dark text-warning border-light shadow-lg rounded-4">
         {/* Center the title */}
         <h2 className="text-center mb-4">Mr. Chetan Jethva</h2>
 

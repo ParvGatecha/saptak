@@ -85,12 +85,6 @@ body {
 
 /* Ensure content takes up space during transition */
 /* You might need to adjust positioning depending on your exact layout */
-.main-content {
-  /* If using absolute positioning for transitions, uncomment below */
-  /* position: relative; */
-  /* width: 100%; */
-   padding-top: 100px; /* Keep padding from sticky navbar */
-}
 
 /* --- Hover Transitions --- */
 
