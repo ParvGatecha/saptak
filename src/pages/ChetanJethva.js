@@ -13,7 +13,7 @@ function ChetanJethva() {
 
   return (
     // Use the same outer container styling
-    <Container className="my-3 fade-in-on-load mw-100 mw-100">
+    <Container className="my-3 p-1 fade-in-on-load mw-100 mw-100">
       {/* Apply the same card styling */}
       <Card className="p-3 p-md-5 bg-dark text-warning border-light shadow-lg rounded-4">
         {/* Center the title */}
@@ -26,7 +26,7 @@ function ChetanJethva() {
             {" "}
             {/* Adjusted column size, added centering */}
             <Image
-              src="/images/chetan-jethva.jpg" // <-- Replace with your actual image path
+              src="/images/ChetanJethva.jpg" // <-- Replace with your actual image path
               alt="Mr. Chetan Jethva"
               style={imageStyle}
               className="shadow img-fluid" // Added img-fluid for better responsiveness

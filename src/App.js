@@ -29,7 +29,7 @@ function App() {
           timeout={300}
         >
           {/* *** CHANGE HERE: Use Container fluid *** */}
-          <Container fluid className="main-content" ref={nodeRef}>
+          <Container fluid className="main-content p-0" ref={nodeRef}>
             <Routes location={location}>
               <Route path="/" element={<About />} />
               <Route
