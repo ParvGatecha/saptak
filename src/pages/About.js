@@ -4,7 +4,7 @@ import { Container, Card, Row, Col, Image } from "react-bootstrap";
 function About() {
   const imageStyle = {
     width: "100%", // Ensures it scales with its container
-    height: "300px", // Fixed height for consistency
+    height: "400px", // Fixed height for consistency
     objectFit: "cover", // Maintains aspect ratio and crops nicely
     borderRadius: "1rem",
   };
@@ -32,7 +32,7 @@ function About() {
               folk dance alive.
             </p>
           </Col>
-          <Col md={6}>
+          <Col md={6} data-aos="fade-left">
             <Image
               src="\images\IMG-20250420-WA0022.jpg"
               alt="Saptak Dance Performance"
@@ -58,7 +58,7 @@ function About() {
               Hollywood film <em>"The Memsaab"</em>.
             </p>
           </Col>
-          <Col md={6}>
+          <Col md={6} data-aos="fade-right">
             <Image
               src="\images\IMG-20250420-WA0016.jpg"
               alt="Mr. Chetan Jethava"

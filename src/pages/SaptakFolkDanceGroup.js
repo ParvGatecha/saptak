@@ -4,7 +4,7 @@ import { Container, Card, Row, Col, Image } from "react-bootstrap";
 function SaptakFolkDanceGroup() {
   const imageStyle = {
     width: "100%",
-    height: "300px",
+    height: "400px",
     objectFit: "cover",
     borderRadius: "1rem",
   };
@@ -30,7 +30,7 @@ function SaptakFolkDanceGroup() {
               twirl.
             </p>
           </Col>
-          <Col md={6}>
+          <Col md={6} data-aos="fade-left">
             <Image
               src="\images\IMG-20250420-WA0026.jpg"
               alt="Saptak Folk Dance Group performing"
@@ -54,7 +54,7 @@ function SaptakFolkDanceGroup() {
               mesmerizing experience that reflects the soul of Gujarat.
             </p>
           </Col>
-          <Col md={6}>
+          <Col md={6} data-aos="fade-right">
             <Image
               src="\images\IMG-20250420-WA0025.jpg"
               alt="Cultural dance performance"

@@ -4,7 +4,7 @@ import { Container, Card, Row, Col, Image } from "react-bootstrap";
 function SaptakInstitute() {
   const imageStyle = {
     width: "100%",
-    height: "300px",
+    height: "400px",
     objectFit: "cover",
     borderRadius: "1rem",
   };
@@ -31,7 +31,7 @@ function SaptakInstitute() {
               nurtured with personal attention and cultural context.
             </p>
           </Col>
-          <Col md={6}>
+          <Col md={6} data-aos="fade-left">
             <Image
               src="\images\IMG-20250420-WA0007.jpg"
               alt="Saptak Institute Training Session"
@@ -55,7 +55,7 @@ function SaptakInstitute() {
               contribute creatively to Indian dance communities.
             </p>
           </Col>
-          <Col md={6}>
+          <Col md={6} data-aos="fade-right">
             <Image
               src="\images\IMG-20250420-WA0015.jpg"
               alt="Chetan Jethava Teaching"

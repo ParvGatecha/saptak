@@ -22,7 +22,11 @@ function ChetanJethva() {
         {/* Use Row and Col for layout */}
         <Row className="align-items-center">
           {/* Column for the Image */}
-          <Col md={5} className="mb-4 mb-md-0 text-center">
+          <Col
+            md={5}
+            className="mb-4 mb-md-0 text-center"
+            data-aos="fade-right"
+          >
             {" "}
             {/* Adjusted column size, added centering */}
             <Image
